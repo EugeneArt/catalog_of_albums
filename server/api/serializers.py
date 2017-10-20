@@ -4,14 +4,14 @@ from .models import Album, Track
 class TrackSerializer(serializers.ModelSerializer):
     class Meta:
         model = Track
-        fields = ('track_name', 'singer', 'duration')
+        fields = ('__all__')
 
 class AlbumSerializer(serializers.ModelSerializer):
     tracks = TrackSerializer(many=True)
 
     class Meta:
         model = Album
-        fields = ('album_name', 'year', 'tracks')
+        fields = ('id', 'album_name', 'year', 'tracks')
 
     def create(self, validated_data):
         tracks_data = validated_data.pop('tracks')
