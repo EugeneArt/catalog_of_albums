@@ -44,5 +44,15 @@ angular
                 }]
             }
         })
+        .state('app.albumCreate', {
+            url: '/albums/create',
+            permissions: false,
+            module: false,
+            views: {
+                'content@app': {
+                    template: '<album-create-component></album-create-component>'
+                }
+            }
+        })
 
   });
