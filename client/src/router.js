@@ -27,32 +27,14 @@ angular
                 }]
             }
         })
-        .state('app.albumDetails', {
+        .state('app.albumForm', {
             url: '/albums/:id',
             permissions: false,
             module: false,
             views: {
                 'content@app': {
-                    template: '<album-details-component ' +
-                                'album="$resolve.album">' +
-                              '</album-details-component>'
-                }
-            },
-            resolve: {
-                album: ['$stateParams', 'albumsEntity', function ($stateParams, albumsEntity) {
-                      return albumsEntity.fetchOne($stateParams.id);
-                }]
-            }
-        })
-        .state('app.albumCreate', {
-            url: '/albums/create',
-            permissions: false,
-            module: false,
-            views: {
-                'content@app': {
-                    template: '<album-create-component></album-create-component>'
+                    template: '<album-form-component></album-form-component>'
                 }
             }
         })
-
   });

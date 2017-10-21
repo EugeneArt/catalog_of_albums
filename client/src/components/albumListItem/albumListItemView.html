@@ -1,4 +1,4 @@
 <h1>Album</h1>
 <p>{{$ctrl.album.album_name}} <span>({{$ctrl.album.year}})</span></p>
-<a href="" ui-sref="app.albumDetails({ id: {{$ctrl.album.id}} })">Update</a>
+<a href="" ui-sref="app.albumForm({ id: $ctrl.album.id })">Update</a>
 <a href="" ng-click="$ctrl.deleteAlbum()">Delete</a>

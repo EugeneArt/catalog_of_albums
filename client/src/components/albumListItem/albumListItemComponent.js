@@ -20,7 +20,7 @@ function albumListItemComponentController() {
   }
   
   function deleteAlbum() {
-      
+      vm.album.$destroy();
   }
 
 }
