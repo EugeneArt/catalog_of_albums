@@ -7,6 +7,11 @@ angular
         url: '/albums',
         permissions: false,
         module: false,
-        template: '<app-component></app-component>'
+        template: '<app-component></app-component>',
+        resolve: {
+            albums: ['albumsEntity', function (albumsEntity) {
+                return albumsEntity.fetchAll();
+            }]
+        }
       })
   });
