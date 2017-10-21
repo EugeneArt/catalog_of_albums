@@ -21,7 +21,7 @@ __pycache__/
 *.stackdump
 npm-debug.log
 
-index.html
+client/index.html
 bower_components/
 node_modules/
 dist/
