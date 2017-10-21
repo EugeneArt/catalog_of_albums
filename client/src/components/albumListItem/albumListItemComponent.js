@@ -1,21 +1,26 @@
 angular
   .module('app')
-  .component('albumListComponent', {
-    templateUrl: '/src/components/albumList/albumListView.html',
+  .component('albumListItemComponent', {
+    templateUrl: '/src/components/albumListItem/albumListItemView.html',
     bindings: {
-        albums: '<'
+        album: '<'
     },
-    controller: albumListComponentController
+    controller: albumListItemComponentController
   })
 ;
 
-function albumListComponentController() {
+function albumListItemComponentController() {
 
   var vm = this;
   vm.$onInit = onInit;
+  vm.deleteAlbum = deleteAlbum;
 
   function onInit() {
 
+  }
+  
+  function deleteAlbum() {
+      
   }
 
 }
