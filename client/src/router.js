@@ -8,14 +8,9 @@ angular
             abstract: true,
             permissions: false,
             module: false,
-            template: '<app-component></app-component>',
-            resolve: {
-                albums: ['albumsEntity', function (albumsEntity) {
-                    return albumsEntity.fetchAll();
-                }]
-            }
+            template: '<app-component></app-component>'
         })
-        .state('app.albums', {
+        .state('app.albumList', {
             url: '/albums',
             permissions: false,
             module: false,
@@ -25,6 +20,28 @@ angular
                                 'albums="$resolve.albums">' +
                               '</album-list-component>'
                 }
+            },
+            resolve: {
+                albums: ['albumsEntity', function (albumsEntity) {
+                    return albumsEntity.fetchAll();
+                }]
+            }
+        })
+        .state('app.albumDetails', {
+            url: '/albums/:id',
+            permissions: false,
+            module: false,
+            views: {
+                'content@app': {
+                    template: '<album-details-component ' +
+                                'album="$resolve.album">' +
+                              '</album-details-component>'
+                }
+            },
+            resolve: {
+                album: ['$stateParams', 'albumsEntity', function ($stateParams, albumsEntity) {
+                      return albumsEntity.fetchOne($stateParams.id);
+                }]
             }
         })
 
