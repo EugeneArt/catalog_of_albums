@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Album, Track
 
 class TrackSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(required=False)
+
     class Meta:
         model = Track
         fields = ('__all__')
@@ -17,7 +19,7 @@ class AlbumSerializer(serializers.ModelSerializer):
         tracks_data = validated_data.pop('tracks')
         album = Album.objects.create(**validated_data)
         for track_data in tracks_data:
-            Track.objects.create(album=album, **track_data)
+            Track.objects.create(album=album.id, **track_data)
         return album
 
     def update(self, instance, validated_data):
@@ -30,11 +32,15 @@ class AlbumSerializer(serializers.ModelSerializer):
         instance.save()
 
         for track_data in tracks_data:
-            track = tracks.pop(0)
-            track.track_name = track_data.get('track_name', track.track_name)
-            track.singer = track_data.get('singer', track.singer)
-            track.duration = track_data.get('duration', track.duration)
-            track.album = track_data.get('album', track.album)
-            track.save()
+            if(track_data.get('id')):
+                for track in tracks:
+                    if(track.id == track_data.get('id')):
+                        track.track_name = track_data.get('track_name', track.track_name)
+                        track.singer = track_data.get('singer', track.singer)
+                        track.duration = track_data.get('duration', track.duration)
+                        track.album = track_data.get('album', track.album)
+                        track.save()
+            else:
+                Track.objects.create(**track_data)
 
         return instance
