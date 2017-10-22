@@ -19,7 +19,7 @@ class AlbumSerializer(serializers.ModelSerializer):
         tracks_data = validated_data.pop('tracks')
         album = Album.objects.create(**validated_data)
         for track_data in tracks_data:
-            Track.objects.create(album=album.id, **track_data)
+            Track.objects.create(album=album, **track_data)
         return album
 
     def update(self, instance, validated_data):
