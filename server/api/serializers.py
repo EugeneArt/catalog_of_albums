@@ -32,6 +32,7 @@ class AlbumSerializer(serializers.ModelSerializer):
         instance.save()
 
         for track_data in tracks_data:
+            # udpate tracks
             if(track_data.get('id')):
                 for track in tracks:
                     if(track.id == track_data.get('id')):
@@ -40,7 +41,13 @@ class AlbumSerializer(serializers.ModelSerializer):
                         track.duration = track_data.get('duration', track.duration)
                         track.album = track_data.get('album', track.album)
                         track.save()
+                        tracks.remove(track)
             else:
+                # create new tracks
                 Track.objects.create(**track_data)
+
+            # delete tracks
+            for track_to_delete in tracks:
+                track_to_delete.delete()
 
         return instance

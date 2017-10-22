@@ -14,14 +14,30 @@ function albumFormComponentController($stateParams, albumsEntity) {
   var vm = this;
   vm.$onInit = onInit;
   vm.saveAlbum = saveAlbum;
+  vm.addTrack = addTrack;
+  vm.deleteTrack = deleteTrack;
 
   function onInit() {
-    vm.album = $stateParams.id? vm.album: new albumsEntity();
-    console.log(vm.album);
+      vm.isNewAlbum = !$stateParams.id;
+      if(vm.isNewAlbum) {
+           vm.album = new albumsEntity();
+           vm.album.tracks = [];
+      }
+  }
+  
+  function addTrack() {
+      vm.track = {};
+      if(!vm.isNewAlbum) {
+           vm.track.album = vm.album.id;
+      }
+      vm.album.tracks.push(vm.track);
+  }
+  
+  function deleteTrack(index) {
+       vm.album.tracks.splice(index, 1);
   }
   
   function saveAlbum() {
-      vm.album.tracks = [];
       vm.album.$save();
   }
 
