@@ -18,3 +18,5 @@
     </div>
     <button class="albumForm__submitbtn" ng-click="$ctrl.saveAlbum()">Save album</button>
 </form>
+<h2> Tracks:</h2>
+<track-form-component ng-repeat="track in $ctrl.album.tracks" track="track"></track-form-component>
