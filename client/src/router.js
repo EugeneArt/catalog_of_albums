@@ -33,8 +33,15 @@ angular
             module: false,
             views: {
                 'content@app': {
-                    template: '<album-form-component></album-form-component>'
+                   template: '<album-form-component ' +
+                                'album="$resolve.album">' +
+                              '</album-form-component>'
                 }
+            },
+            resolve: {
+                album: ['$stateParams','albumsEntity', function ($stateParams,albumsEntity) {
+                    return albumsEntity.fetchOne($stateParams.id);
+                }]
             }
         })
   });

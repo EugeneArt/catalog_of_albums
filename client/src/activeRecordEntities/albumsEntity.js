@@ -6,7 +6,7 @@ function albumsEntity($cacheFactory, $q, $injector, ActiveRecord, API_ENDPOINT) 
 
   var prototype = {
     $urlRoot: API_ENDPOINT + 'albums',
-    $cache: $cacheFactory('album'),
+    $cache: $cacheFactory('albums'),
     $constructor: function categoryEntity(properties) {
       this.$initialize.apply(this, arguments)
     }

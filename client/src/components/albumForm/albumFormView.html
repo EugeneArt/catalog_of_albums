@@ -1,1 +1,20 @@
 <h1>Album Detail</h1>
+<form name="albumForm" novalidate>
+    <div class="albumform__item">
+        <div class="category__item_label">Album name</div>
+        <div class="albumform__item_input" ng-class="{'albumform__item_with-error': albumForm.name.$invalid && albumForm.name.$touched && albumForm.name.$error}">
+            <input class="input" type="text" name="name" ng-model="$ctrl.album.album_name" ng-maxlength="200" required>
+            <div class="tooltip tooltip_error" ng-show="albumForm.name.$error.required && albumForm.name.$invalid && albumForm.name.$touched">You need to fill the album name</div>
+            <div class="tooltip tooltip_error" ng-show="albumForm.name.$error.maxlength">The album name is too long </div>
+        </div>
+    </div>
+    <div class="albumform__item">
+        <div class="category__item_label">Year</div>
+        <div class="albumform__item_input" ng-class="{'albumform__item_with-error': albumForm.year.$invalid && albumForm.year.$touched && albumForm.year.$error.maxlength}">
+            <input class="input" type="text" name="year" ng-model="$ctrl.album.year" pattern="\d*" maxlength="4" minlength="4" required>
+            <div class="tooltip tooltip_error" ng-show="albumForm.year.$error.required && albumForm.year.$invalid && albumForm.year.$touched">You need to fill the album year</div>
+            <div class="tooltip tooltip_error" ng-show="albumForm.year.$error.minlength && albumForm.year.$invalid && albumForm.year.$touched">You need to fill the album year like 'yyyy'</div>
+        </div>
+    </div>
+    <button class="albumForm__submitbtn" ng-click="$ctrl.saveAlbum()">Save album</button>
+</form>
