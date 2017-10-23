@@ -9,7 +9,7 @@ angular
   })
 ;
 
-function albumFormComponentController(albumsEntity, ngDialog, $state, $stateParams) {
+function albumFormComponentController(albumsEntity, ngDialog, $state, $stateParams, $scope) {
 
   var vm = this;
   vm.$onInit = onInit;
@@ -21,8 +21,8 @@ function albumFormComponentController(albumsEntity, ngDialog, $state, $statePara
   function onInit() {
       vm.isNewAlbum = !vm.album;
       if(vm.isNewAlbum) {
-           vm.album = new albumsEntity();
-           vm.album.tracks = [];
+          vm.album = new albumsEntity();
+          vm.album.tracks = [];
       }
   }
   
@@ -55,6 +55,7 @@ function albumFormComponentController(albumsEntity, ngDialog, $state, $statePara
 
   function closeDialog() {
       ngDialog.closeAll();
+      $state.go('.', $stateParams, {reload: true, inherit: true, notify: true});
   }
 
 }
