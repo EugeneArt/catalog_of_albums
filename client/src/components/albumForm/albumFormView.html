@@ -1,4 +1,5 @@
 <h1>Album Detail</h1>
+<hr>
 <a href ng-click="$ctrl.closeDialog()" class="album__item-btn_close"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
 <form name="albumForm" novalidate>
     <div class="albumform__item">
@@ -19,12 +20,26 @@
     </div>
 
     <h2>Tracks:</h2>
-    <div ng-repeat="track in $ctrl.album.tracks">
-        <span ng-click="$ctrl.deleteTrack($index)">Delete track</span>
-        <track-form-component track="track"></track-form-component>
+    <hr>
+    <div class="container container__tracks">
+        <div class="row">
+             <div class="col-sm-6 col-md-4" ng-repeat="track in $ctrl.album.tracks">
+                 <div class="track__card">
+                     <a href ng-click="$ctrl.deleteTrack($index)" class="album__item-btn_close"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
+                     <track-form-component track="track"></track-form-component>
+                 </div>
+             </div>
+             <div class="col-sm-6 col-md-4">
+                <div class="track__card">
+                     <a href class="track__btn_add" ng-click="$ctrl.addTrack()">
+                      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    </a>
+                </div>
+             </div>
+        </div>
+    </div>
+    <div class="albumForm__submitbtn">
+        <a href  ng-click="$ctrl.saveAlbum()" ng-disabled="albumForm.$invalid">Save album   <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span></a>
     </div>
 
-    <button ng-click="$ctrl.addTrack()">Add track</button>
-
-    <button class="albumForm__submitbtn" ng-click="$ctrl.saveAlbum()" ng-disabled="albumForm.$invalid">Save album</button>
 </form>

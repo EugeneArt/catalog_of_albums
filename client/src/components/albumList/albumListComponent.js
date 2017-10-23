@@ -48,7 +48,7 @@ function albumListComponentController(ngDialog) {
       'album="ngDialogData.album">' +
       '</album-form-component>',
       plain: true,
-      className: 'ngdialog-theme-default',
+      className: 'ngdialog-theme-default ngdialog-theme__albumform',
       closeByEscape: true,
       showClose: false,
       data: {
@@ -62,7 +62,7 @@ function albumListComponentController(ngDialog) {
       template: '<album-form-component ' +
       '</album-form-component>',
       plain: true,
-      className: 'ngdialog-theme-default',
+      className: 'ngdialog-theme-default ngdialog-theme__albumform',
       closeByEscape: true,
       showClose: false
     });
