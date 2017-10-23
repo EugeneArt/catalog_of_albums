@@ -24,18 +24,18 @@ class AlbumSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         tracks_data = validated_data.pop('tracks')
-        tracks = (instance.tracks).all()
-        tracks = list(tracks)
+        tracks = list((instance.tracks).all())
 
+        # Perform update album.
         instance.album_name = validated_data.get('album_name',instance.album_name)
         instance.year = validated_data.get('year', instance.year)
         instance.save()
 
+        # Perform creations and updates tracks.
         for track_data in tracks_data:
-            # udpate tracks
-            if(track_data.get('id')):
+            if track_data.get('id'):
                 for track in tracks:
-                    if(track.id == track_data.get('id')):
+                    if track.id == track_data.get('id'):
                         track.track_name = track_data.get('track_name', track.track_name)
                         track.singer = track_data.get('singer', track.singer)
                         track.duration = track_data.get('duration', track.duration)
@@ -43,11 +43,10 @@ class AlbumSerializer(serializers.ModelSerializer):
                         track.save()
                         tracks.remove(track)
             else:
-                # create new tracks
                 Track.objects.create(**track_data)
 
-            # delete tracks
-            for track_to_delete in tracks:
-                track_to_delete.delete()
+        # Perform deletions tracks.
+        for track_to_delete in tracks:
+            track_to_delete.delete()
 
         return instance
