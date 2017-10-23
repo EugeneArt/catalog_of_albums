@@ -9,7 +9,7 @@ angular
   })
 ;
 
-function albumFormComponentController($stateParams, albumsEntity) {
+function albumFormComponentController(albumsEntity, ngDialog) {
 
   var vm = this;
   vm.$onInit = onInit;
@@ -18,7 +18,7 @@ function albumFormComponentController($stateParams, albumsEntity) {
   vm.deleteTrack = deleteTrack;
 
   function onInit() {
-      vm.isNewAlbum = !$stateParams.id;
+      vm.isNewAlbum = !vm.album;
       if(vm.isNewAlbum) {
            vm.album = new albumsEntity();
            vm.album.tracks = [];
@@ -38,7 +38,11 @@ function albumFormComponentController($stateParams, albumsEntity) {
   }
   
   function saveAlbum() {
-      vm.album.$save();
+      vm.album.$save().then(success).catch(fail);
+      
+      function success() {
+          ngDialog.closeAll();
+      }
   }
 
 }

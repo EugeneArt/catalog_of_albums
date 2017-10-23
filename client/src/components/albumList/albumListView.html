@@ -4,7 +4,7 @@
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-4">
-            <div class="thumbnail" ui-sref="app.albumForm({id: null})">
+            <div class="thumbnail" ng-click="$ctrl.createAlbum()">
               <img src="../dist/img/album.png" alt="album">
               <div class="caption">
                   <h3>New album</h3>
@@ -24,7 +24,7 @@
                     </div>
                     <div class="caption__settings">
                         <a href ng-click="$ctrl.openAlbum(album)" class="album__btn_options">Show</a>
-                        <a href ui-sref="app.albumForm({ id: album.id })" class="album__btn_options">Update</a>
+                        <a href ng-click="$ctrl.updateAlbum(album)" class="album__btn_options">Update</a>
                     </div>
                 </div>
                 <a href ng-click="$ctrl.deleteAlbum(album, $index)" class="album__btn_delete"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>

@@ -15,6 +15,8 @@ function albumListComponentController(ngDialog) {
   vm.$onInit = onInit;
   vm.deleteAlbum = deleteAlbum;
   vm.openAlbum = openAlbum;
+  vm.updateAlbum = updateAlbum;
+  vm.createAlbum = createAlbum;
 
   function onInit() {
 
@@ -26,7 +28,7 @@ function albumListComponentController(ngDialog) {
   }
   
   function openAlbum(album) {
-      ngDialog.open({
+    ngDialog.open({
       template: '<album-list-item-component ' +
       'album="ngDialogData.album">' +
       '</album-list-item-component>',
@@ -36,6 +38,30 @@ function albumListComponentController(ngDialog) {
       data: {
         album: album
       }
+    });
+  }
+  
+  function updateAlbum(album) {
+    ngDialog.open({
+      template: '<album-form-component ' +
+      'album="ngDialogData.album">' +
+      '</album-form-component>',
+      plain: true,
+      className: 'ngdialog-theme-default',
+      closeByEscape: true,
+      data: {
+        album: album
+      }
+    });
+  }
+
+  function createAlbum() {
+    ngDialog.open({
+      template: '<album-form-component ' +
+      '</album-form-component>',
+      plain: true,
+      className: 'ngdialog-theme-default',
+      closeByEscape: true
     });
   }
 
