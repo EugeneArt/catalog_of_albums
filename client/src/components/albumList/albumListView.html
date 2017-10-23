@@ -1,7 +1,32 @@
-<h1>Album List</h1>
-<a href="" ui-sref="app.albumForm({id: null})">New Album</a>
-<div ng-repeat="album in $ctrl.albums">
-    <p ng-click="$ctrl.openAlbum(album)">{{album.album_name}} <span>({{album.year}})</span></p>
-    <a href="" ui-sref="app.albumForm({ id: album.id })">Update</a>
-    <a href="" ng-click="$ctrl.deleteAlbum(album, $index)">Delete</a>
+<div class="container">
+    <div class="page-header">
+        <h1>Album list</h1>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail" ui-sref="app.albumForm({id: null})">
+          <img src="../dist/img/album.png" alt="album">
+          <div class="caption">
+            <h3>New album</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-md-4" ng-repeat="album in $ctrl.albums">
+        <div class="thumbnail" >
+          <img src="../dist/img/album.png" alt="album">
+          <div class="caption">
+            <h3>{{album.album_name}}</h3>
+              <p>({{album.year}})</p>
+            <p>
+                <a href ng-click="$ctrl.openAlbum(album)" class="btn btn-primary">Show album</a>
+                <a href ui-sref="app.albumForm({ id: album.id })" class="btn btn-primary" role="button">Update</a>
+                <a href ng-click="$ctrl.deleteAlbum(album, $index)" class="btn btn-default" role="button">Delete</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
+

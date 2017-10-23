@@ -1,3 +1,15 @@
-<header>
-    <h1 class="header__logo" ui-sref="app.albums">Catalog of <b>Albums</b></h1>
-</header>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href ui-sref="app.albumList">
+        <img alt="Catalog of albums" src="">
+      </a>
+    </div>
+      <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+              <li ui-sref-active="active"><a href ui-sref="app.albumList">Albums</a></li>
+              <li ui-sref-active="active"><a href ui-sref="app.albumList">Albums(admin)</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
