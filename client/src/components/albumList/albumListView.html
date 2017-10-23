@@ -1,3 +1,7 @@
 <h1>Album List</h1>
 <a href="" ui-sref="app.albumForm({id: null})">New Album</a>
-<album-list-item-component ng-repeat="album in $ctrl.albums" album="album"></album-list-item-component>
+<div ng-repeat="album in $ctrl.albums">
+    <album-list-item-component album="album"></album-list-item-component>
+    <a href="" ui-sref="app.albumForm({ id: album.id })">Update</a>
+    <a href="" ng-click="$ctrl.deleteAlbum(album, $index)">Delete</a>
+</div>

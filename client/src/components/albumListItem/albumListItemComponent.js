@@ -13,14 +13,10 @@ function albumListItemComponentController() {
 
   var vm = this;
   vm.$onInit = onInit;
-  vm.deleteAlbum = deleteAlbum;
+
 
   function onInit() {
 
-  }
-  
-  function deleteAlbum() {
-      vm.album.$destroy();
   }
 
 }

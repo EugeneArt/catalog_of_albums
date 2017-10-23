@@ -13,9 +13,15 @@ function albumListComponentController() {
 
   var vm = this;
   vm.$onInit = onInit;
+  vm.deleteAlbum = deleteAlbum;
 
   function onInit() {
 
+  }
+
+  function deleteAlbum(album, $index) {
+      vm.albums.splice($index, 1);
+      album.$destroy();
   }
 
 }
