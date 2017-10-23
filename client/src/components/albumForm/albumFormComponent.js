@@ -9,7 +9,7 @@ angular
   })
 ;
 
-function albumFormComponentController(albumsEntity, ngDialog) {
+function albumFormComponentController(albumsEntity, ngDialog, $state, $stateParams) {
 
   var vm = this;
   vm.$onInit = onInit;
@@ -42,6 +42,13 @@ function albumFormComponentController(albumsEntity, ngDialog) {
       
       function success() {
           ngDialog.closeAll();
+          if(vm.isNewAlbum) {
+              $state.go('.', $stateParams, {reload: true, inherit: true, notify: true});
+          }
+      }
+      
+      function fail(errors) {
+          console.log(errors);
       }
   }
 
