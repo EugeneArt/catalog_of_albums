@@ -3,9 +3,6 @@ angular
   .component('footerComponent', {
     templateUrl: '/src/components/footer/footerView.html',
     bindings: {},
-    require: {
-      appComponent: '^appComponent'
-    },
     controller: footerComponentController
   })
 ;

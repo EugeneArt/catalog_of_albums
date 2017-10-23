@@ -1,7 +1,7 @@
 <form name="trackForm" novalidate>
     <div class="albumform__item">
         <div class="category__item_label">Name</div>
-        <div class="trackform__item_input" ng-class="{'trackform__item_with-error': trackForm.name.$invalid && trackForm.name.$touched && trackForm.name.$error}">
+        <div class="trackform__item_input" ng-class="{'albumform__item_with-error': trackForm.name.$invalid && trackForm.name.$touched && trackForm.name.$error}">
             <input class="input" type="text" name="name" ng-model="$ctrl.track.track_name" ng-maxlength="200" required>
             <div class="alert alert-danger" role="alert" ng-show="trackForm.name.$error.required && trackForm.name.$invalid && trackForm.name.$touched">You need to fill the track name</div>
             <div class="alert alert-danger" role="alert" ng-show="trackForm.name.$error.maxlength">The track name is too long </div>
@@ -9,7 +9,7 @@
     </div>
     <div class="albumform__item">
         <div class="category__item_label">Singer</div>
-        <div class="trackform__item_input" ng-class="{'trackform__item_with-error': trackForm.singer.$invalid && trackForm.singer.$touched && trackForm.singer.$error}">
+        <div class="trackform__item_input" ng-class="{'albumform__item_with-error': trackForm.singer.$invalid && trackForm.singer.$touched && trackForm.singer.$error}">
             <input class="input" type="text" name="singer" ng-model="$ctrl.track.singer" ng-maxlength="200" required>
             <div class="alert alert-danger" role="alert" ng-show="trackForm.singer.$error.required && trackForm.singer.$invalid && trackForm.singer.$touched">You need to fill the singer's name</div>
             <div class="alert alert-danger" role="alert"ng-show="trackForm.singer.$error.maxlength">The singer's name is too long </div>
@@ -17,7 +17,7 @@
     </div>
     <div class="albumform__item">
         <div class="category__item_label">Duration</div>
-        <div class="trackform__item_input" ng-class="{'trackform__item_with-error': trackForm.duration.$invalid && trackForm.duration.$touched && trackForm.duration.$error.maxlength}">
+        <div class="trackform__item_input" ng-class="{'albumform__item_with-error': trackForm.duration.$invalid && trackForm.duration.$touched && trackForm.duration.$error.maxlength}">
             <input class="input" type="text" name="duration" ng-model="$ctrl.track.duration" pattern="\d{2}\:\d{2}\:\d{2}" maxlength="8" minlength="8" required>
             <div class="alert alert-danger" role="alert" ng-show="trackForm.duration.$error.required && trackForm.duration.$invalid && trackForm.duration.$touched">You need to fill the track's duration</div>
             <div class="alert alert-danger" role="alert" ng-show="trackForm.duration.$error.minlength && trackForm.duration.$invalid && trackForm.duration.$touched">You need to fill the track's duration like '00:00:00'</div>

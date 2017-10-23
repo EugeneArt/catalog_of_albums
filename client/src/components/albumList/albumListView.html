@@ -3,7 +3,7 @@
         <h1>Album list</h1>
     </div>
     <div class="row">
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4" ng-if="$ctrl.isAdmin">
             <div class="thumbnail" ng-click="$ctrl.createAlbum()">
               <img src="../dist/img/album.png" alt="album">
               <div class="caption">
@@ -24,10 +24,10 @@
                     </div>
                     <div class="caption__settings">
                         <a href ng-click="$ctrl.openAlbum(album)" class="album__btn_options">Show</a>
-                        <a href ng-click="$ctrl.updateAlbum(album)" class="album__btn_options">Update</a>
+                        <a href ng-if="$ctrl.isAdmin" ng-click="$ctrl.updateAlbum(album)" class="album__btn_options">Update</a>
                     </div>
                 </div>
-                <a href ng-click="$ctrl.deleteAlbum(album, $index)" class="album__btn_delete"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
+                <a href ng-if="$ctrl.isAdmin" ng-click="$ctrl.deleteAlbum(album, $index)" class="album__btn_delete"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
             </div>
         </div>
     </div>

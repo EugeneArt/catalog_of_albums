@@ -8,7 +8,12 @@ angular
             abstract: true,
             permissions: false,
             module: false,
-            template: '<app-component></app-component>'
+            template: '<app-component></app-component>',
+            resolve: {
+                albums: ['albumsEntity', function (albumsEntity) {
+                    return albumsEntity.fetchAll();
+                }]
+            }
         })
         .state('app.albumList', {
             url: '/albums',
@@ -20,11 +25,19 @@ angular
                                 'albums="$resolve.albums">' +
                               '</album-list-component>'
                 }
-            },
-            resolve: {
-                albums: ['albumsEntity', function (albumsEntity) {
-                    return albumsEntity.fetchAll();
-                }]
+            }
+        })
+        .state('app.albumListAdmin', {
+            url: '/albums/admin',
+            permissions: false,
+            module: false,
+            views: {
+                'content@app': {
+                    template: '<album-list-component ' +
+                                'albums="$resolve.albums"' +
+                                'admin="true">' +
+                              '</album-list-component>'
+                }
             }
         })
   });

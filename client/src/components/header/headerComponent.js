@@ -3,9 +3,6 @@ angular
   .component('headerComponent', {
     templateUrl: '/src/components/header/headerView.html',
     bindings: {},
-    require: {
-      appComponent: '^appComponent'
-    },
     controller: headerComponentsController
   })
 ;

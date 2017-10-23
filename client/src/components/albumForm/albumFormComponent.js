@@ -9,7 +9,7 @@ angular
   })
 ;
 
-function albumFormComponentController(albumsEntity, ngDialog, $state, $stateParams, $scope) {
+function albumFormComponentController(albumsEntity, ngDialog, $state, $stateParams) {
 
   var vm = this;
   vm.$onInit = onInit;

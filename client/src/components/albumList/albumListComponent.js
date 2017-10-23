@@ -3,7 +3,8 @@ angular
   .component('albumListComponent', {
     templateUrl: '/src/components/albumList/albumListView.html',
     bindings: {
-        albums: '<'
+        albums: '<',
+        admin: '@'
     },
     controller: albumListComponentController
   })
@@ -19,7 +20,7 @@ function albumListComponentController(ngDialog) {
   vm.createAlbum = createAlbum;
 
   function onInit() {
-
+    vm.isAdmin = vm.admin;
   }
 
   function deleteAlbum(album, $index) {
