@@ -5,8 +5,10 @@
   position: relative;
   .caption {
     position: absolute;
+    left: 50%;
     top: 50%;
-    transform: traslateY(-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 100%;
     text-align: center;
     color: #fff;
@@ -14,21 +16,51 @@
       text-decoration: none;
       font-size: 10rem;
       color: @btnColor;
-      &:hover {
-        color: @btnHoverColor;
+    }
+    .caption__settings {
+      margin-top: 15px;
+      .album__btn_options {
+        text-decoration: none;
+        background-color: @btnHoverColor;
+        padding: 5px 8px;
+        font-size: 1.7rem;
+        color: @btnColor;
+        &:hover {
+          background-color: @btnColor;
+          color: @btnHoverColor;
+        }
       }
     }
   }
   .album__btn_delete {
+    visibility: hidden;
     position: absolute;
     top: 10px;
     right: 10px;
     text-decoration: none;
     font-size: 3rem;
-    color: @btnColor;
+    color: @btnHoverColor;
     &:hover {
-      color: @btnHoverColor;
+      color: @btnColor;
     }
-
   }
+  .caption__settings {
+    visibility: hidden;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: @btnHoverColor;
+    .caption {
+      .caption__settings {
+        visibility: visible;
+      }
+      .album__btn_add {
+        color: @btnHoverColor;
+      }
+    }
+    .album__btn_delete {
+      visibility: visible;
+    }
+  }
+
 }

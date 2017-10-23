@@ -18,11 +18,15 @@
             <div class="thumbnail" >
                 <img src="../dist/img/album.png" alt="album">
                 <div class="caption">
-                    <h3>{{album.album_name}}</h3>
-                    <p>({{album.year}})</p>
+                    <div class="caption__content">
+                        <h3>{{album.album_name}}</h3>
+                        <p>({{album.year}})</p>
+                    </div>
+                    <div class="caption__settings">
+                        <a href ng-click="$ctrl.openAlbum(album)" class="album__btn_options">Show</a>
+                        <a href ui-sref="app.albumForm({ id: album.id })" class="album__btn_options">Update</a>
+                    </div>
                 </div>
-                <a href ng-click="$ctrl.openAlbum(album)" class="btn btn-primary">Show album</a>
-                <a href ui-sref="app.albumForm({ id: album.id })" class="btn btn-primary" role="button">Update</a>
                 <a href ng-click="$ctrl.deleteAlbum(album, $index)" class="album__btn_delete"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
             </div>
         </div>
