@@ -16,6 +16,7 @@ function albumFormComponentController(albumsEntity, ngDialog, $state, $statePara
   vm.saveAlbum = saveAlbum;
   vm.addTrack = addTrack;
   vm.deleteTrack = deleteTrack;
+  vm.closeDialog = closeDialog;
 
   function onInit() {
       vm.isNewAlbum = !vm.album;
@@ -50,6 +51,10 @@ function albumFormComponentController(albumsEntity, ngDialog, $state, $statePara
       function fail(errors) {
           console.log(errors);
       }
+  }
+
+  function closeDialog() {
+      ngDialog.closeAll();
   }
 
 }

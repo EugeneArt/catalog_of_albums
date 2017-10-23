@@ -9,14 +9,18 @@ angular
   })
 ;
 
-function albumListItemComponentController() {
+function albumListItemComponentController(ngDialog) {
 
   var vm = this;
   vm.$onInit = onInit;
-
+  vm.closeDialog = closeDialog;
 
   function onInit() {
 
+  }
+
+  function closeDialog() {
+      ngDialog.closeAll();
   }
 
 }

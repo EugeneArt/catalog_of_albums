@@ -35,6 +35,7 @@ function albumListComponentController(ngDialog) {
       plain: true,
       className: 'ngdialog-theme-default',
       closeByEscape: true,
+      showClose: false,
       data: {
         album: album
       }
@@ -49,6 +50,7 @@ function albumListComponentController(ngDialog) {
       plain: true,
       className: 'ngdialog-theme-default',
       closeByEscape: true,
+      showClose: false,
       data: {
         album: album
       }
@@ -61,7 +63,8 @@ function albumListComponentController(ngDialog) {
       '</album-form-component>',
       plain: true,
       className: 'ngdialog-theme-default',
-      closeByEscape: true
+      closeByEscape: true,
+      showClose: false
     });
   }
 

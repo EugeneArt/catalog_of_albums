@@ -1,5 +1,14 @@
-<h1>Album</h1>
-<p>{{$ctrl.album.album_name}} <span>({{$ctrl.album.year}})</span></p>
-<ul>
-    <li ng-repeat="track in $ctrl.album.tracks">{{track.track_name}} <i>({{track.singer}})</i> - {{track.duration}}</li>
-</ul>
+<a href ng-click="$ctrl.closeDialog()" class="album__item-btn_close"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
+<h3>{{$ctrl.album.album_name}} <span>({{$ctrl.album.year}})</span></h3>
+<div class="media" ng-repeat="track in $ctrl.album.tracks">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="../dist/img/track.jpg" alt="track" width="42" height="42">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{track.track_name}}</h4>
+    <i>{{track.singer}}</i>
+    <p>{{track.duration}}</p>
+  </div>
+</div>
